@@ -1,6 +1,7 @@
 package com.android.sample.randomquote;
 
 import android.os.AsyncTask;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnShare, btnNew;
     ProgressBar progressBar;
     RelativeLayout relativeLayout;
+    private String shareText = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,18 @@ public class MainActivity extends AppCompatActivity {
         new RandomQuoteTak().execute(url);
     }
 
-    public void showItems(){
+    public void btnShearMe(View view){
+        shareQuote();
+    }
 
+    public void shareQuote(){
+        if(shareText != null) {
+            String TITLE = "Share this Quote Via";
+            String M_TYPE = "text/plain";
+            ShareCompat.IntentBuilder.from(this).setChooserTitle(TITLE).setType(M_TYPE).setText(shareText).startChooser();
+        }
+    }
+    public void showItems(){
         relativeLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
     }
@@ -99,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             txtAuthor.setText("-UNKNOWN");
         }else{
             txtAuthor.setText("By -"+quoteAuthor);
+            shareText = quoteText+ "\n By -"+quoteAuthor;
         }
     }
 }

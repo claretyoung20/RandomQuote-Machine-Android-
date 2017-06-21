@@ -74,13 +74,14 @@
         android:id="@+id/btnShear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:text="SHARE"
-        android:layout_marginLeft="80dp"
-        android:layout_marginStart="80dp"
         android:layout_alignLeft="@+id/txtAuthor"
         android:layout_alignStart="@+id/txtAuthor"
-        android:layout_alignTop="@+id/btnNew" />
+        android:layout_alignTop="@+id/btnNew"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
+        android:background="@android:color/holo_green_light"
+        android:onClick="btnShearMe"
+        android:text="SHARE" />
 
 </RelativeLayout>
     <ProgressBar
